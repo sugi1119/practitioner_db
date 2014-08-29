@@ -1,0 +1,16 @@
+<h2>Patient lists</h2>
+
+  <% @patients.each do |patient| %>
+    <ul>
+      <li>Patient ID: #<%= patient.id %></li>
+      <li>Name: <%= patient.title %>. <%= patient.name %></li>
+      <li>Address: <%= patient.address %> <%= patient.postcode %></li>
+      <li>Phone number: <%= patient.phone %></li>
+      <li>Mobile number: <%= patient.mobile %></li>
+      <li>Date of Birth: <%= patient.dob %></li>
+      <li>Occupation: <%= patient.occupation %></li>
+
+      <li><%= link_to('Edit', edit_patient_path(patient))%></li>
+      <li><%= link_to('Delete', patient, :data => {:confirm => 'Please confirm to delete the patient from the list', :method => :delete })%></li>
+    </ul>
+  <% end %>

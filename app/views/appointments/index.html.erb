@@ -1,0 +1,40 @@
+<h2>Appointment index page</h2>
+<div class="info">
+<h2>Today's appointments for <%= @current_user.name %></h2>
+<div class="app">
+  <% @appointments.each do |appointment| %>
+    <% if @current_user.id == appointment.practitioner_id %>
+      <!-- <p>There is no appointment made for today.</p> -->
+    <%# else %>
+      <%if appointment.appointment_date.strftime('%Y-%m-%d') == Date.today.to_s %>
+      <blockquote>
+          <p><strong>Appointment ID: <%= appointment.id %></strong><br>
+            Time: <%= appointment.appointment_date %><br>
+            Practitioner: <%= appointment.practitioner.name %><br>
+            Patient: <%= link_to(appointment.patient.name, appointment.patient) %><br>
+            <%= link_to('consultation',edit_appointment_path(appointment))%><br>
+          </p>
+      </blockquote>
+      <% end %>
+    <% end%>
+  <% end %>
+</div>
+<hr>
+<h2>List of all appointments for all registered practitioners</h2>
+<div class="app">
+<% @appointments.each do |appointment|%>
+  <%if appointment.appointment_date.strftime('%Y-%m-%d') >= Date.today.to_s %>
+    <blockquote>
+      <p>Appointment ID: <%= appointment.id %><br>
+        Appointment# <%= appointment.appointment_date%><br>
+        Practitioner: <%= appointment.practitioner.name %><br>
+        Patient: <%= link_to(appointment.patient.name, appointment.patient) %><br>
+      <li><%= link_to('Edit', edit_appointment_path(appointment))%></li>
+      <li><%= link_to('Delete', appointment, :data => {:confirm => 'Are you sure?', :method => :delete })%></li>
+    </p>
+    </blockquote>
+  <% end %>
+<% end %>
+</div>
+</div>
+

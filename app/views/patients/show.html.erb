@@ -1,0 +1,9 @@
+<h2>Patient information ID#: <%= @patient.id %></h2>
+<ul class ="info">
+  <li>Name:<%= @patient.title + @patient.name%></li>
+  <li>Address:<%= @patient.address + @patient.postcode%></li>
+  <li>Date of Birth:<%= @patient.dob.strftime('%B %d %Y') if @patient.dob %></li>
+  <li>Phone:<%= @patient.phone %></li>
+  <li>Mobile:<%= @patient.mobile %></li>
+  <li>Occupatio:<%= @patient.occupation %></li>
+</ul>

@@ -1,0 +1,21 @@
+<%= form_for @appointment do |f| %>
+  <%= flash[:notice] %>
+  <div class="form-group">
+    <%= f.date_field :appointment_date, :min => Date.today %>
+    <%= time_field_tag 'appointment[appointment_time]' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :practitioner_id %>
+    <%= f.select :practitioner_id, Practitioner.all.map{|practitioner|[practitioner.id.to_s + practitioner.name, practitioner.id]}, :include_blank => true, :class =>'form-control input-lg' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :patient_id %>
+    <%= f.select :patient_id, Patient.all.map{|patient|[patient.id.to_s + patient.f_name + patient.l_name, patient.id]}, :include_blank => true, :class =>'form-control input-lg' %>
+  </div>
+  <div class="form-group">
+    <%#== check %>
+    <%= f.submit "Update Appointment"%>
+  </div>
+<% end %>
