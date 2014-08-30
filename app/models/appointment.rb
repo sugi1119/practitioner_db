@@ -14,9 +14,7 @@
 class Appointment < ActiveRecord::Base
   belongs_to :practitioner
   belongs_to :patient
+  has_one :consultation
 
-  # def initialize(attributes=nil)
-  #   attr_with_defaults = {:taken => false}.merge(attributes)
-  #   super(attr_with_defaults)
-  # end
+
 end
