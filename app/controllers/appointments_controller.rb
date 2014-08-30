@@ -84,12 +84,13 @@ class AppointmentsController < ApplicationController
     end
 
     def check_valid
-
         #check if the practitioner is already booked or not
         #1. check new booking date/time is same with the taken one or not
         #2. check practitioner_id is same or not
         #3. check the appointment is not overlapped. 1 appointment needs 1 hour.
-        #4. if same patient / same pracititoner / same date, but change booking time to original booking time within +-1 hour, should be changed.
+        #4. if same patient / same pracititoner / same date, but change booking time to
+        #original booking time within +-1 hour, should be changed. or make assumption as delete
+        #once
         @check_taken.each do |c|
           if c.practitioner_id == @appointment.practitioner_id
             if DateTime.parse(c.appointment_date.to_s) == @check
