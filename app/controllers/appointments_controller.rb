@@ -22,6 +22,8 @@ class AppointmentsController < ApplicationController
     @check = DateTime.parse(@appointment.appointment_date.to_s)
 
     @check_taken = Appointment.where(taken: true)
+# raise 'err'
+    # @end_time = @appointment.appointment_date + 1.hour
 
     if check_valid
         @appointment[:taken] = true
@@ -82,28 +84,42 @@ class AppointmentsController < ApplicationController
     end
 
     def check_valid
-      @check_taken.each do |c|
-        if DateTime.parse(c.appointment_date.to_s) == @check
-          # raise 'err'
-          flash[:notice] = "Unable to book due to duble booking."
-          return false
-        else
-              ### check = Time.local(appointment.appointment_date)s
+
+        #check if the practitioner is already booked or not
+        #1. check new booking date/time is same with the taken one or not
+        #2. check practitioner_id is same or not
+        #3. check the appointment is not overlapped. 1 appointment needs 1 hour.
+        #4. if same patient / same pracititoner / same date, but change booking time to original booking time within +-1 hour, should be changed.
+        @check_taken.each do |c|
+          if c.practitioner_id == @appointment.practitioner_id
+            if DateTime.parse(c.appointment_date.to_s) == @check
+              flash[:notice] = "The practitioner is unavailable. Please check the other day/time"
+              return false
+            elsif Date.parse(c.appointment_date.to_s) == Date.parse(@check.to_s)
+              if (@check.hour - c.appointment_date.hour) > -1 && (@check.hour - c.appointment_date.hour) < 1
+                flash[:notice] = "Each consultation needs 1 hour. Please chose other day/time.#{@check.hour - c.appointment_date.hour}"
+
+                return false
+              end
+            end
+          end
+        end
+
+
+        #check the appointment made for business day / hour.
           if @check.wday == 6 || @check.wday == 7
               flash[:notice] = "Please chose Mon-Fri."
               return false
-          elsif @check.hour < 9 || @check.hour > 17
-              flash[:notice] = "Please chose the range between 09:00-17:00. Last appointment time is 16:00"
+          elsif @check.hour < 9 || @check.hour >= 16
+              flash[:notice] = "Please chose the range between 09:00-16:00. Last appointment time is 16:00"
              return false
           else
             return true
           end
-        end
-      end
-
     end
-
 end
+
+
 
 # t.datetime "appointment_date"
 # t.integer  "practitioner_id"
