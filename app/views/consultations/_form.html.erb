@@ -1,0 +1,27 @@
+<%= form_for @consultation do |f| %>
+  <%= flash[:notice] %>
+
+  <div>
+   Date: <%= @consultation.appointment.appointment_date %>
+  </div>
+
+  <div>
+    Practitioner: <%= @consultaion.appointment.practitioner.name %>
+  </div>
+
+  <div>
+    Patient ID: <%= @consultation.appointment.patient_id%>
+    Patient name: <%= @consultation.appointment.patient.name%>
+  </div>
+
+  <div>
+    Consultation note: <%=  %>
+  </div>
+
+<!-- Date -->
+<!-- Practitoner name -->
+<!-- Patient name & ID  -->
+<!-- consultation_note -->
+<!-- submit -->
+
+<% end %>
