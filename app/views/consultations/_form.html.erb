@@ -15,7 +15,12 @@
   </div>
 
   <div>
-    Consultation note: <%=  %>
+    <%= f.label :initial_consultation_note, "Consultation note" %>
+    <%= f.text_area :notes, :include_blank => true,  :class => "form-control", :rows => "3" %>
+  </div>
+
+  <div>
+    <%= f.submit "Save consultation note" %>
   </div>
 
 <!-- Date -->

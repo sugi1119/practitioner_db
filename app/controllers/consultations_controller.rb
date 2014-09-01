@@ -5,11 +5,20 @@ class ConsultationsController < ApplicationController
   end
 
   def new
-    consultation = Counsultation.new
+    @consultation = Consultation.new
+
   end
 
   def create
-    @consultation = Consultation.new consultation_params
+    consultation = Consultation.create consultation_params
+    consultations.appointment_id = params[:appointment_id]
+
+    if consultation.save
+      redirect_to consultation
+    else
+      render :new
+    end
+    # consultation.save
 
   end
 

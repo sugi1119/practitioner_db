@@ -12,7 +12,7 @@
             Time: <%= appointment.appointment_date %><br>
             Practitioner: <%= appointment.practitioner.name %><br>
             Patient: <%= link_to(appointment.patient.name, appointment.patient) %><br>
-            <%= link_to('consultation',edit_appointment_path(appointment))%><br>
+            <%= link_to 'consultation', new_consultation_path(:appointment_id => appointment.id) %><br>
           </p>
       </blockquote>
       <% end %>
