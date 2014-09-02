@@ -1,5 +1,10 @@
 <%= form_for @prescription do |f| %>
-  <div>Patient ID# /name:#<%= @consultation.appointment.patient.id %> /<%= @consultation.appointment.patient.name %> </div>
+  <div>Date: <%= @consultation.appointment.appointment_date%>
+  </div>
+
+  <div>Practitioner ID# / Name: #<%= @consultation.appointment.practitioner.id %> / <%= @consultation.appointment.practitioner.name %> </div>
+
+  <div>Patient ID# /Name: #<%= @consultation.patient.id %> /<%= @consultation.patient.name %> </div>
 
   <div>
     Consultation note: <%= @consultation.initial_consultation_note %>

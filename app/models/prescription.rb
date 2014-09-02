@@ -11,4 +11,7 @@
 #
 
 class Prescription < ActiveRecord::Base
+  belongs_to :consultation
+  has_many :supplements, :through => :prescription_supplements
+  has_many :prescription_supplements
 end

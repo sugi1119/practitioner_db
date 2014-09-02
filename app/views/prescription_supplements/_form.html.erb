@@ -1,0 +1,17 @@
+<div class ="info_sp">
+
+  <div>Please chose supplements from below list and enter quantity. </div>
+
+<%= form_for @prescription_supplement, :class => "form-group" do |f| %>
+
+  <div class="form-group">
+    <%= f.collection_select :supplement_id, Supplement.all, :id, :supplement_pacakge, :class=>"form-control input-lg"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :qty, "Qty" %>
+    <%= f.text_field :qty %>
+  </div>
+      <%= hidden_field_tag 'prescription_supplement[prescription_id]', @prescription_supplement.prescription_id %>
+  <%= f.submit :type => "submit", :class => "btn btn-default" %>
+<% end %>
+</div>

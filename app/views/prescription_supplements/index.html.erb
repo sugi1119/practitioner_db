@@ -1,0 +1,8 @@
+<h2>Supplement list</h2>
+  <% @prescription_supplements.each do |supplement| %>
+  <p>ID: <%= @prescription_supplements.supplement.id %>
+    Item name: <%= @prescription_supplements.supplement.item_name %>
+  Amount: <%= @prescription_supplements.supplement.package_amount %>
+  Item cost: <%= @prescription_supplements.supplement.item_cost %>
+  Qty: <%= @prescription_supplements.qty %></p>
+  <% end %>

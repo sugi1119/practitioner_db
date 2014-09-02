@@ -13,4 +13,5 @@ class Consultation < ActiveRecord::Base
   belongs_to :appointment
   has_one :patient, :through => :appointment
   has_one :practioner, :through => :appoinment
+  has_many :prescriptions
 end

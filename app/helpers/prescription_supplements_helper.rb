@@ -1,0 +1,2 @@
+module PrescriptionSupplementsHelper
+end

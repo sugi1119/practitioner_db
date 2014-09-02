@@ -18,4 +18,9 @@ class Supplement < ActiveRecord::Base
   def fancy_name
     "#{self.try(:item_name)} - #{self.try(:package_amount)} - #{self.try(:item_cost)}"
   end
+
+  def supplement_pacakge
+    "#{self.try (:item_name)} / amount: #{self.try(:package_amount)} per pack"
+  end
+
 end
