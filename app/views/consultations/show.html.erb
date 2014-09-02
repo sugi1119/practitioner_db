@@ -1,3 +1,31 @@
 <!-- show the consultation note -->
+<h2>Consultation note</h2>
+  <div>
+    Consultation record ID# <%= @consultation.id %> <br>
+  </div>
+  <div>
+    Date: <%= @consultation.appointment.appointment_date %>
+  </div>
+  <div>
+      Practitioner: <%= @consultation.appointment.practitioner.name %>
+  </div>
+
+  <div>
+      Patient ID#/ name: # <%= @consultation.appointment.patient_id%> / <%= @consultation.appointment.patient.title %>. <%= @consultation.appointment.patient.name%>
+  </div>
+
+  <div>
+      Consultation note: <%= @consultation.initial_consultation_note %>
+  </div>
+
+<div class="">
+    <label for="presecription">Prescription required</label>
+    <select name="prescription" id="prescription" class="form-control" placeholder="Please chose">
+      <option>Please chose</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+  </div>
 <!-- redirect_to invoice creation if no prescription -->
 <!-- redirect_to prescription / supplement -->
+

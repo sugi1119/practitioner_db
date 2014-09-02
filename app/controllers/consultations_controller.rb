@@ -4,29 +4,40 @@ class ConsultationsController < ApplicationController
     @consultations = Consultation.all
   end
 
+  def create
+    consultation = Consultation.create consultation_params
+    consultation.appointment_id = params[:appointment_id]
+
+    if consultation.save
+      if params[:prescription] == 'Yes'
+        redirect_to new_prescription_path consultation.id
+
+      elsif params[:prescription] == 'No'
+        redirect_to consultations_path
+      else
+        render :new
+      end
+    else
+      render :new
+    end
+
+  end
+
+
   def new
+    @appointment = Appointment.find params[:appointment_id]
     @consultation = Consultation.new
 
   end
 
-  def create
-    consultation = Consultation.create consultation_params
-    consultations.appointment_id = params[:appointment_id]
 
-    if consultation.save
-      redirect_to consultation
-    else
-      render :new
-    end
-    # consultation.save
-
-  end
 
   def edit
     @consultation = Consultation.find params[:id]
   end
 
   def update
+    @appointment = Appointment.find params[:appointment_id]
     @consultaion = Consultation.find params[:id]
 
     @consultation.update consultation_params
@@ -37,6 +48,15 @@ class ConsultationsController < ApplicationController
 
   def show
     @consultation = Consultation.find params[:id]
+
+    if params[:prescription] == 'Yes'
+      redirect_to new_prescription_path consultation.id
+    elsif params[:prescription] == 'No'
+      redirect_to consultations_path
+    else
+      render :show
+    end
+
   end
 
   def destroy
@@ -48,8 +68,8 @@ class ConsultationsController < ApplicationController
 
 
   private
-    def consulation_params
-      params.require(:consultation).permit(:initial_consultation_noe, :appointment_id)
+    def consultation_params
+      params.require(:consultation).permit(:initial_consultation_note, :appointment_id)
 
     end
 end

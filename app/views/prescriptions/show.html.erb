@@ -1,0 +1,34 @@
+<div class="supple_info">
+<h2>Prescription</h2>
+<h4>Patient name: <%= @prescription.consultation.appointment.patient.name %></h4>
+<div class="supple_info2">
+  <strong>Recommendation: </strong><br>
+  <%= @prescription.recommendation %>
+</p>
+
+<p>
+  <strong>Dosage : </strong><br>
+   <%= @prescription.dosage %>
+</p>
+
+<p>
+  <strong>Supplement list:</strong> <br>
+  <%# @prescription.prescription_supplements.each do |ps| %>
+   Item name: <%= ps.supplement.item_name %><br>
+  Amount of per bag:<%= ps.supplement.amount %> <br>
+  Qty: <%= ps.qty %><br>
+  <%#= @supplement.sub_total %>
+  <% end %>
+</p>
+
+<%#= link_to 'add supplement', new_prescription_supplement_path(:prescription_id => @prescription.id) %>
+</div>
+<p class="practioner">
+  <strong>Practioner name: <%= @prescription.consultation.appointment.practioner.name %> </strong><br>
+  <strong>Sign: </strong><br>
+  <strong>Date: </strong><%= @prescription.consultation.appointment.appointment_date.strftime("%Y-%m-%d") %>
+</p>
+<%= link_to 'Invoice', new_invoice_path(:appointment_id => @prescription.appointment.id)%>
+</div>
+
+

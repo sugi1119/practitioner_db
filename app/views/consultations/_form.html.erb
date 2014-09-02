@@ -2,31 +2,34 @@
   <%= flash[:notice] %>
 
   <div>
-   Date: <%= @consultation.appointment.appointment_date %>
+   Date: <%= @appointment.appointment_date %>
   </div>
 
   <div>
-    Practitioner: <%= @consultaion.appointment.practitioner.name %>
+    Practitioner: <%= @appointment.practitioner.name %>
   </div>
 
   <div>
-    Patient ID: <%= @consultation.appointment.patient_id%>
-    Patient name: <%= @consultation.appointment.patient.name%>
+    Patient ID#/ name: # <%= @appointment.patient_id%> / <%= @appointment.patient.title %>. <%= @appointment.patient.name%>
   </div>
 
   <div>
     <%= f.label :initial_consultation_note, "Consultation note" %>
-    <%= f.text_area :notes, :include_blank => true,  :class => "form-control", :rows => "3" %>
+    <%= f.text_area :initial_consultation_note, :include_blank => true,  :class => "form-control", :rows => "10" %>
+  </div>
+
+  <div class="">
+    <label for="presecription">Prescription required</label>
+    <select name="prescription" id="prescription" class="form-control" placeholder="Please chose">
+      <option>Please chose</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
   </div>
 
   <div>
+    <%= hidden_field_tag :appointment_id, @appointment.id %>
     <%= f.submit "Save consultation note" %>
   </div>
-
-<!-- Date -->
-<!-- Practitoner name -->
-<!-- Patient name & ID  -->
-<!-- consultation_note -->
-<!-- submit -->
 
 <% end %>

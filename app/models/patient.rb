@@ -22,6 +22,6 @@ class Patient < ActiveRecord::Base
   has_many :appointments
 
   def name
-    "#{f_name} #{m_name} #{l_name}"
+    "#{title}. #{f_name} #{m_name} #{l_name}"
   end
 end
