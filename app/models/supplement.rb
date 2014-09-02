@@ -15,7 +15,7 @@ class Supplement < ActiveRecord::Base
 
   has_many :prescription_supplements
 
-  def supplement_line
+  def fancy_name
     "#{self.try(:item_name)} - #{self.try(:package_amount)} - #{self.try(:item_cost)}"
   end
 end

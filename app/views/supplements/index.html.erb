@@ -4,12 +4,13 @@
     <p> Supplement ID: <%= supplement.id %><br>
         Item name: <%= supplement.item_name %><br>
         Amount per bag: <%= supplement.package_amount %><br>
-        Item cost: <%= supplement.item_cost %></p>
-
+        Item cost: $ <%= supplement.item_cost %></p>
+    <li><%= link_to('Edit', edit_supplement_path(supplement))%></li>
+    <li><%= link_to('Delete', supplement, :data => {:confirm => 'Are you sure?', :method => :delete })%></li>
 <% end %>
 </div>
 
- <%= form_for @supplements do |f| %>
-<%= f.label supplement.id %>
-  <%= f.select supplement.id, Supplement.all.map{|supplement|[supplement.id.to_s + supplement.item_name, supplement.amount, supplement.item_cost]}, :include_blank => true %>
-<% end %>
+<%#= form_for @supplements do |f| %>
+<%#= f.label supplement.id %>
+  <%#= f.select supplement.id, Supplement.all.map{|supplement|[supplement.id.to_s + supplement.item_name, supplement.package_amount, supplement.item_cost]}, :include_blank => true %>
+<%# end %>

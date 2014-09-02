@@ -13,6 +13,9 @@ module ApplicationHelper
       links += "<li>#{ link_to('Register new patient', new_patient_path) }</li>"
       links += "<li>#{ link_to('Appointment information', appointments_path) }</li>"
       links += "<li>#{ link_to('Create new appointment', new_appointment_path) }</li>"
+      links += "<li>#{ link_to('Supplement list', supplements_path) }</li>"
+      links += "<li>#{ link_to('Register new supplement', new_supplement_path) }</li>"
+
 
 
     else

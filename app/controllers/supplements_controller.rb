@@ -1,7 +1,7 @@
 class SupplementsController < ApplicationController
 
   def index
-    @supplements = Supplement.all
+    @supplements = Supplement.order('item_name').all
   end
 
   def create
@@ -28,10 +28,11 @@ class SupplementsController < ApplicationController
     @supplements = Supplement.all
   end
 
-  def upate
-    supplement = Supplment.find params[:id]
+  def update
+    supplement = Supplement.find params[:id]
 
-    if supplement.update supplement_params
+    if supplement.save
+    supplement.update supplement_params
       redirect_to supplement
     else
       render :edit
