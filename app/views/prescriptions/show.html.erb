@@ -17,8 +17,10 @@
    Item name: <%= ps.supplement.item_name %><br>
   Amount of per bag:<%= ps.supplement.package_amount %> <br>
   Qty: <%= ps.qty %><br>
-  <li><%= link_to 'edit supplement', edit_prescription_supplement_path(:prescription_id => @prescription.id) %></li>
-  <li><%= link_to('Delete', prescription_supplement_path, :data => {:confirm => 'Are you sure?', :method => :delete })%></li><hr>
+<%# raise 'err' %>
+  <li><%= link_to 'edit supplement', edit_prescription_supplement_path(ps.id) %></li>
+  <td><%= link_to "Delete", prescription_supplement_path(ps.id), method: :delete, data: { confirm: "Are you sure?" } %>
+  <li><%#= link_to 'Delete', prescription_supplement_path(ps.id) %></li><hr>
   <% end %>
 </p>
 

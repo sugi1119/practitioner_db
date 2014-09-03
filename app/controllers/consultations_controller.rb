@@ -13,7 +13,7 @@ class ConsultationsController < ApplicationController
         redirect_to new_prescription_path consultation.id
 
       elsif params[:prescription] == 'No'
-        redirect_to consultations_path
+        redirect_to new_invoice_path consultation.id
       else
         render :new
       end

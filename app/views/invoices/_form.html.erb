@@ -1,0 +1,25 @@
+<%= form_for @invoice do |f| %>
+  <p>
+<%#= f.date_field :appointment_date, :min => Date.today %>
+<%#= time_field_tag 'appointment_time' %>
+  </p>
+
+
+<p><%= @appointment.practitioner.name %></p>
+<p><%= @appointment.patient.name(sdfd) %></p>
+
+<p><%=f.label :service, "Service" %>
+<%= f.text_field :service %> </p>
+<p>AUD: <%f.label :service_charge, "Consultation / service fee" %></p>
+
+<!-- <div class="">
+    <label for="presecription">Prescription required</label>
+    <select name="prescription" id="prescription" class="form-control" placeholder="Please chose">
+      <option>Please chose</option>
+      <option>The first session </option>
+      <option>From the second session</option>
+    </select>
+  </div> -->
+
+<%= f.submit %>
+<% end %>

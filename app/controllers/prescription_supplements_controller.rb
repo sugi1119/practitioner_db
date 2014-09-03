@@ -20,11 +20,23 @@ class PrescriptionSupplementsController < ApplicationController
     @prescription_supplement = PrescriptionSupplement.find params[:id]
   end
 
+  def update
+    p = PrescriptionSupplement.find params[:id]
+
+    if p.save
+      p.update prescription_supplement_params
+      redirect_to Prescription.find(p.prescription_id)
+    else
+      render :edit
+    end
+
+  end
+
   def destroy
     prescription_supplement = PrescriptionSupplement.find params[:id]
     prescription_supplement.destroy
 
-    redirect_to prescription_path
+    redirect_to prescription_path(prescription_supplement.prescription)
   end
 
 

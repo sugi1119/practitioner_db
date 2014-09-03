@@ -1,0 +1,13 @@
+<%= form_for @servicemenu do |f| %>
+  <div>
+    <%= f.label :service_item %>
+    <%= f.text_field :service_item %>
+  </div>
+
+  <div>
+    <%= f.label :service_cost %>
+    <%= f.text_field :service_cost%>
+  </div>
+
+  <%= f.submit :type => "submit" %>
+<% end %>

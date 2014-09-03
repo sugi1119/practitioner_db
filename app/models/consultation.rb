@@ -14,4 +14,5 @@ class Consultation < ActiveRecord::Base
   has_one :patient, :through => :appointment
   has_one :practioner, :through => :appoinment
   has_many :prescriptions
+  has_one :invoice
 end

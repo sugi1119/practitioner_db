@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :practitioners, :patients, :appointments
   resources :supplements
   resources :prescription_supplements
+  resources :invoices, :servicemenus
 
   resources :consultations, :except => :new
   resources :prescriptions, :except => :new

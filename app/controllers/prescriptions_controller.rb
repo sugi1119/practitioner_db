@@ -27,6 +27,7 @@ class PrescriptionsController < ApplicationController
 
   def show
     @prescription = Prescription.find params[:id]
+    # @prescription_supplement = PrescriptionSupplement.find params[:id]
 
   end
 
