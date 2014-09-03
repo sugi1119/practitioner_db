@@ -10,13 +10,12 @@
 #
 
 class Servicemenu < ActiveRecord::Base
-  # has_many :invoices :through => :invoice_servicemenus
 
-  has_many :invoice_servicemenus
+  has_and_belongs_to_many :invoices
 
   def service_list
-
+     "Service item: #{self.try(:service_item)} / cost:$ #{self.try(:service_cost)}"
   end
 
-
 end
+

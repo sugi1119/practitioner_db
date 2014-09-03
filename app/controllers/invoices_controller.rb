@@ -23,9 +23,12 @@ class InvoicesController < ApplicationController
   def destroy
   end
 
-  # def service_list
+  def choose
+  end
 
-  # end
+  def add_service
+  end
+
 
   private
     def invoice_params

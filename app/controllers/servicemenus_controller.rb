@@ -38,7 +38,6 @@ class ServicemenusController < ApplicationController
   end
 
   def destroy
-# raise 'err'
     servicemenu = Servicemenu.find params[:id]
     servicemenu.destroy
 

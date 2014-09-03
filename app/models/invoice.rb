@@ -12,4 +12,5 @@
 
 class Invoice < ActiveRecord::Base
   belongs_to :consultation
+  has_and_belongs_to_many :servicemenus
 end
