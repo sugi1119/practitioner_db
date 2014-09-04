@@ -5,12 +5,28 @@
   </p>
 
 
-<p><%= @appointment.practitioner.name %></p>
-<p><%= @appointment.patient.name(sdfd) %></p>
+<p><%= @consultation.appointment.practitioner.name %></p>
+<p><%= @consultation.appointment.patient.name %></p>
+<p><%#= @consultation.appointment.patient.name(sdfd) %></p>
 
-<p><%=f.label :service, "Service" %>
-<%= f.text_field :service %> </p>
-<p>AUD: <%f.label :service_charge, "Consultation / service fee" %></p>
+<%= @servicemenus.each do |s| %>
+<p>
+  list: <%= s.id %>
+</p>
+<% end %>
+
+<div>
+<%#raise 'err' %>
+  <%= f.collection_select :menu_id,   @servicemenus, :id, :menu_package, :class => "form-control input-lg" %>
+</div>
+
+
+
+
+
+<p><%#=f.label :charge_item, "Service" %>
+<%#= f.text_field :charge_item %> </p>
+<p>AUD: <%#f.label :charge_cost, "Consultation / service fee" %></p>
 
 <!-- <div class="">
     <label for="presecription">Prescription required</label>

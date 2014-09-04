@@ -20,7 +20,7 @@
 <%# raise 'err' %>
   <li><%= link_to 'edit supplement', edit_prescription_supplement_path(ps.id) %></li>
   <td><%= link_to "Delete", prescription_supplement_path(ps.id), method: :delete, data: { confirm: "Are you sure?" } %>
-  <li><%#= link_to 'Delete', prescription_supplement_path(ps.id) %></li><hr>
+  <hr>
   <% end %>
 </p>
 
@@ -31,7 +31,7 @@
   <strong>Sign: </strong><br>
   <strong>Date: </strong><%= @prescription.consultation.appointment.appointment_date.strftime("%Y-%m-%d") %>
 </p>
-<%#= link_to 'Invoice', new_invoice_path(:consultation_id => @prescription.consultation.id)%>
+<%= link_to 'Invoice', new_invoice_path(:consultation_id => @prescription.consultation.id)%>
 </div>
 
 

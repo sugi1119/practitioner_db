@@ -15,8 +15,8 @@ module ApplicationHelper
       links += "<li>#{ link_to('Create new appointment', new_appointment_path) }</li>"
       links += "<li>#{ link_to('Supplement list', supplements_path) }</li>"
       links += "<li>#{ link_to('Register new supplement', new_supplement_path) }</li>"
-      links += "<li>#{ link_to('Service menu list', servicemenus_path) }</li>"
-      links += "<li>#{ link_to('Register new service menu', new_servicemenu_path) }</li>"
+      links += "<li>#{ link_to('Service menu list', menus_path) }</li>"
+      links += "<li>#{ link_to('Register new service menu', new_menu_path) }</li>"
 
 
 

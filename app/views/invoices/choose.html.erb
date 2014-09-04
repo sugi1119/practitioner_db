@@ -1,0 +1,7 @@
+<%= form_tag "/invoices/#{params[:invoice_id]}/add_service" do %>
+<% @servicemenus.each do |servicemenu| %>
+<%= number_field_tag "Service [#{servicemenu.id}]", nil %>
+<%= servicemenu.service_item %>
+<% end %>
+<%= submit_tag %>
+<% end %>

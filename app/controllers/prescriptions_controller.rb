@@ -34,9 +34,13 @@ class PrescriptionsController < ApplicationController
   def update
     @consultation = Consultation.find params[:consultation_id]
     prescription = Prescription.find params[:id]
-    prescription.update prescription_params
 
-    redirect_to prescription
+    if prescription.update prescription_params
+        redirect_to prescription
+    else
+        render :edit
+    end
+
   end
 
   def destroy

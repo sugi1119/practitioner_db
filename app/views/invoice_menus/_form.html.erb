@@ -1,0 +1,15 @@
+<div>Please chose service item from below list and enter quantity. </div>
+
+<%= form_for @invoice_menu, :class => "form-group" do |f| %>
+
+  <div class="form-group">
+    <%= f.collection_select :menu_id, Menu.all, :id, :menu_pacakge, :class=>"form-control input-lg"%>
+  </div>
+  <div class="form-group">
+    <%= f.label :quantity, "Qty" %>
+    <%= f.text_field :quantity %>
+  </div>
+      <%= hidden_field_tag 'invoice_menu[invoice_id]', @invoice_menu.invoice_id %>
+  <%= f.submit :type => "submit", :class => "btn btn-default" %>
+<% end %>
+</div>

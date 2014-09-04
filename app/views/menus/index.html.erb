@@ -1,0 +1,12 @@
+<h2>Service menu list</h2>
+
+<% @menus.each do |menu| %>
+<div>
+  Menu ID #<%= menu.id %>
+   Item: <%= menu.menu_item %>
+  Cost : $ <%= menu.menu_cost %>
+</div>
+    <li><%= link_to('Edit', edit_menu_path(menu))%></li>
+    <li><%= link_to('Delete', menu, :data => {:confirm => 'Are you sure?', :method => :delete })%></li>
+
+<% end %>

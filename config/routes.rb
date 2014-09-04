@@ -3,12 +3,16 @@ Rails.application.routes.draw do
   resources :practitioners, :patients, :appointments
   resources :supplements
   resources :prescription_supplements
-  resources :invoices, :servicemenus
+  resources :invoice_menus
+  resources :menus
 
   resources :consultations, :except => :new
+  resources :invoices, :except => :new
   resources :prescriptions, :except => :new
 
   get '/consultations/:appointment_id/new' => 'consultations#new', :as => 'new_consultation'
+
+  get '/invoices/:consultation_id/new' => 'invoices#new', :as => 'new_invoice'
 
   get '/prescriptions/:consultation_id/new' => 'prescriptions#new', :as => 'new_prescription'
 
