@@ -5,8 +5,9 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    invoice = Invoice.create invoice_params
-    invoice.consultation_id = params[:consultation_id]
+    # raise
+    invoice = Invoice.new invoice_params
+    invoice.menus << Menu.find(params[:menu_id])
     # invoice.charge_item = @servicemenu.service_item
     # invoice.charge_cost = @servicemenu.service_cost
 
@@ -22,7 +23,9 @@ class InvoicesController < ApplicationController
     # raise 'err'
     @consultation = Consultation.find params[:consultation_id]
     @menus = Menu.all
-    @invoice = Invoice.new
+    @invoice = Invoice.new()
+    # menu_id = invoice_menus.menu_id
+
     # @invoice.charge_item = @servicemenu.service_item
     # @invoice.charge_cost = @servicemenu.service_cost
 
@@ -38,6 +41,8 @@ class InvoicesController < ApplicationController
   end
 
   def show
+
+    # raise 'err'
     @invoice = Invoice.find params[:id]
   end
 

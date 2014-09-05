@@ -5,7 +5,7 @@
 <%= form_for @prescription_supplement, :class => "form-group" do |f| %>
 
   <div class="form-group">
-    <%= f.collection_select :supplement_id, Supplement.all, :id, :supplement_pacakge, :class=>"form-control input-lg"%>
+    <%= f.collection_select :supplement_id, Supplement.all, :id, :supplement_package, :class=>"form-control input-lg"%>
   </div>
   <div class="form-group">
     <%= f.label :qty, "Qty" %>

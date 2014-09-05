@@ -3,8 +3,9 @@
 <%= form_for @invoice_menu, :class => "form-group" do |f| %>
 
   <div class="form-group">
-    <%= f.collection_select :menu_id, Menu.all, :id, :menu_pacakge, :class=>"form-control input-lg"%>
+    <%= f.collection_select :menu_id, Menu.all, :id, :menu_package, :class=>"form-control input-lg"%>
   </div>
+
   <div class="form-group">
     <%= f.label :quantity, "Qty" %>
     <%= f.text_field :quantity %>

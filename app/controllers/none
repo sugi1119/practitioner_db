@@ -1,5 +1,9 @@
 class InvoiceMenusController < ApplicationController
 
+  def index
+    @invoice_menus = InvoiceMenu.all
+  end
+
   def new
     @invoice_menu = InvoiceMenu.new(:invoice_id => params[:invoice_id].to_i)
 

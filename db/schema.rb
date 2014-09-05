@@ -32,20 +32,17 @@ ActiveRecord::Schema.define(version: 20140904134625) do
     t.datetime "updated_at"
   end
 
-  create_table "invoice_menus", force: true do |t|
-    t.integer  "menu_id"
-    t.integer  "invoice_id"
-    t.integer  "quantity"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "invoices", force: true do |t|
-    t.integer  "conusltation_id"
+    t.integer  "consultation_id"
     t.string   "charge_item"
     t.float    "charge_cost"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "invoices_menus", id: false, force: true do |t|
+    t.integer "menu_id"
+    t.integer "invoice_id"
   end
 
   create_table "menus", force: true do |t|

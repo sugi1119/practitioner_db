@@ -1,0 +1,7 @@
+<h2>Service menu list </h2>
+<% @invoice_menus.each do |m| %>
+  <p>ID: <%= m.menu_id %>
+    Item name: <%= m.menu.menu_name %>
+  Item cost: <%= m.menu.menu_cost %>
+  Qty: <%= m.quantity %></p>
+  <% end %>

@@ -10,11 +10,12 @@
 #
 
 class Menu < ActiveRecord::Base
-  has_many :invoices, :trough => :invoice_menus
-  has_many :invoice_menus
+  has_and_belongs_to_many  :invoices
 
   def menu_package
-    "#{serlf.try(:menu_item)} - $ #{self.try(:menu_cost)}"
+    "#{self.try(:menu_item)} - AUD: #{self.try(:menu_cost)}"
   end
 
 end
+
+

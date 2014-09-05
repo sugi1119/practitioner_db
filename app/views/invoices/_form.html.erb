@@ -1,41 +1,38 @@
 <%= form_for @invoice do |f| %>
-  <p>
-<%#= f.date_field :appointment_date, :min => Date.today %>
-<%#= time_field_tag 'appointment_time' %>
+  <p>Date:
+    <%= @consultation.appointment.appointment_date %>
   </p>
 
 
-<p><%= @consultation.appointment.practitioner.name %></p>
-<p><%= @consultation.appointment.patient.name %></p>
-<p><%#= @consultation.appointment.patient.name(sdfd) %></p>
 
-<%= @servicemenus.each do |s| %>
-<p>
-  list: <%= s.id %>
-</p>
-<% end %>
+  <div>Practitioner ID# <%= @consultation.appointment.practitioner_id %> / <%= @consultation.appointment.practitioner.name %></div>
+  <div></div>
+  <div>Patient Name: <%= @consultation.appointment.patient.name %></div>
+  <div>Consultation ID# <%= @consultation.id %></div>
 
-<div>
-<%#raise 'err' %>
-  <%= f.collection_select :menu_id,   @servicemenus, :id, :menu_package, :class => "form-control input-lg" %>
-</div>
 
+  <div>
+  <%#raise 'err' %>
+    <%#= f.collection_select :charge_item,   @menus, :id, :menu_package, :class => "form-control input-lg" %>
+      <%= select_tag(:menu_id, options_from_collection_for_select(@menus, :id, :menu_package)) %>
+
+  </div>
 
 
 
 
-<p><%#=f.label :charge_item, "Service" %>
-<%#= f.text_field :charge_item %> </p>
-<p>AUD: <%#f.label :charge_cost, "Consultation / service fee" %></p>
+  <p><%#=f.label :charge_item, "Service" %>
+  <%#= f.text_field :charge_item %> </p>
+  <p>AUD: <%#f.label :charge_cost, "Consultation / service fee" %></p>
 
-<!-- <div class="">
-    <label for="presecription">Prescription required</label>
-    <select name="prescription" id="prescription" class="form-control" placeholder="Please chose">
-      <option>Please chose</option>
-      <option>The first session </option>
-      <option>From the second session</option>
-    </select>
-  </div> -->
-
-<%= f.submit %>
+  <!-- <div class="">
+      <label for="presecription">Prescription required</label>
+      <select name="prescription" id="prescription" class="form-control" placeholder="Please chose">
+        <option>Please chose</option>
+        <option>The first session </option>
+        <option>From the second session</option>
+      </select>
+    </div> -->
+  <%= hidden_field_tag 'invoice[consultation_id]', @consultation.id %>
+  <%= f.submit %>
 <% end %>
