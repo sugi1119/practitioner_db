@@ -47,7 +47,7 @@ class PractitionersController < ApplicationController
 
   private
     def practitioner_params
-        params.require(:practitioner).permit(:name, :phone, :email, :password, :password_confirmation)
+        params.require(:practitioner).permit(:name, :phone, :email, :password, :password_confirmation, :abn_number, :address, :postcode)
     end
 
     def check_if_logged_in

@@ -5,6 +5,7 @@
     <li>Name: <%= practitioner.name %></li>
     <li>Contact number: <%= practitioner.phone %></li>
     <li>e-mail: <%= practitioner.email %></li>
+    <li></li>
 
     <li><%= link_to('Edit', edit_practitioner_path(practitioner))%></li>
     <li><%= link_to('Delete', practitioner, :data => {:confirm => 'Please confirm to delete the practitioner from the list', :method => :delete })%></li>

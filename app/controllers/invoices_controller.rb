@@ -41,9 +41,12 @@ class InvoicesController < ApplicationController
   end
 
   def show
-
     # raise 'err'
     @invoice = Invoice.find params[:id]
+    consultation_id = @invoice.consultation_id
+    @consultation = Consultation.find consultation_id
+
+    # Consultation.find params[:consultation_id]
   end
 
   def update

@@ -8,6 +8,9 @@
 #  email           :string(255)
 #  password_digest :string(255)
 #  is_admin        :boolean          default(FALSE)
+#  abn_number      :integer
+#  address         :string(255)
+#  postcode        :string(255)
 #
 
 class Practitioner < ActiveRecord::Base

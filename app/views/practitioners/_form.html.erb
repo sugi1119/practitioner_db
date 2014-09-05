@@ -20,6 +20,18 @@
     <%= f.label :password_confirmation, "Password confirmation: " %>
     <%= f.text_field :password_confirmation %>
   </div>
+  <div>
+    <%= f.label :abn_number, "ABN #: " %>
+    <%= f.text_field :abn_number %>
+  </div>
+  <div>
+    <%= f.label :address, "Address: " %>
+    <%= f.text_field :addres %>
+  </div>
+  <div>
+    <%= f.label :postcode, "Post code: " %>
+    <%= f.text_field :postcode %>
+  </div>
 
     <%= f.submit :type => "submit" %>
 <% end %>
