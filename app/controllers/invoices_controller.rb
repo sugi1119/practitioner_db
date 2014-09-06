@@ -5,12 +5,18 @@ class InvoicesController < ApplicationController
   end
 
   def create
-    # raise
+    # raise allen way
     invoice = Invoice.new invoice_params
-    invoice.menus << Menu.find(params[:menu_id])
-    # invoice.charge_item = @servicemenu.service_item
-    # invoice.charge_cost = @servicemenu.service_cost
+    invoice.menus = []
 
+    # raise 'err'
+    invoice.menus << Menu.find(params[:menu_id])
+
+    # invoice = Invoice.create invoice_params
+    # invoice.menus << Menu.find(params[:menu_id])
+    # invoice.consultation_id = params[:consultation_id]
+
+# raise 'err'
     if invoice.save
       redirect_to invoice_path(invoice)
     else
@@ -20,19 +26,16 @@ class InvoicesController < ApplicationController
   end
 
   def new
-    # raise 'err'
-    @consultation = Consultation.find params[:consultation_id]
-    @menus = Menu.all
-    @invoice = Invoice.new()
-    # menu_id = invoice_menus.menu_id
+   if Invoice.find params[:id]
+      @consultation = Consultation.find params[:consultation_id]
+      @menus = Menu.all
+      @invoice = Invoice.find params[:id]
 
-    # @invoice.charge_item = @servicemenu.service_item
-    # @invoice.charge_cost = @servicemenu.service_cost
-
-
-
-
-    # servicemenu =
+    else
+      @consultation = Consultation.find params[:consultation_id]
+      @menus = Menu.all
+      @invoice = Invoice.new()
+    end
 
   end
 
@@ -41,19 +44,29 @@ class InvoicesController < ApplicationController
   end
 
   def show
-    # raise 'err'
+
     @invoice = Invoice.find params[:id]
     consultation_id = @invoice.consultation_id
+    # raise 'err'
     @consultation = Consultation.find consultation_id
+    # raise 'err'
 
-    # Consultation.find params[:consultation_id]
   end
 
   def update
-    @consultation = Consultation.find params[:consultation_id]
     invoice = Invoice.find params[:id]
+     # raise 'err'
+    consultation_id = invoice.consultation_id
+    consultation = Consultation.find consultation_id
 
-    if invoice.update invoice_params
+    # raise 'err'
+
+    # @consultation = Consultation.find params[:consultation_id]
+    # invoice = Invoice.find params[:id]
+    # raise 'errrr'
+
+    if invoice.save
+      # raise 'err'
       redirect_to invoice
     else
       render :edit
@@ -68,20 +81,27 @@ class InvoicesController < ApplicationController
     redirect_to invoice_index
   end
 
-  def choose
-    @menus = Menu.all
-  end
+  # def choose
+  #   @menus = Menu.all
+  # end
 
-  def add_service
-    invoice = Invoice.find params[:id]
-    invoice.save
+  # def add_menu
+  #    invoice = Invoice.find params[:id]
 
-    # params[:servicemenu].each do |servicemenu_id, cost|
-    #   servicemnu = Servicemenu.find servicemenu_id
-    #   if cost.present?
-    #   end
-    redirect_to invoice_path
-  end
+  #    invoice.menu << additional_menu
+  #   # invoice.save
+
+    # params[:menu].each do |menu_id|
+    #   additional_menu = Menu.find menu_id
+    #   invoice.menu << additional_menu
+    # end
+      # if cost.present?
+  #   #   end
+  #   redirect_to invoice_path
+    # end
+
+    # redirect_to invoice_path
+  # end
 
 
   private

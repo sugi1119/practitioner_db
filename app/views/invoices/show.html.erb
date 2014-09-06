@@ -10,7 +10,19 @@ Consultation ID: <%= @invoice.consultation_id %><br>
   <div>Consultation ID# <%= @consultation.id %></div>
 
 
-Charge_item: <%= @invoice.menus.pluck(:menu_item) %><br>
+ <%# @invoice.each do |line|  %>
+<div>
+  <%#= @invoice.menus.menu_item %> <%#= @invoice.menus.menu_cost %>
+</div>
+<%# end %>
+
+<!-- Charge_item: <%#= @invoice.menus.pluck(:menu_item) %> -->
+
+
 <% @invoice.menus.each do |menu| %>
-  Charge cost: <%= menu.menu_cost %>
+ charge item: <%= menu.menu_item %>
+  Charge cost: <%= menu.menu_cost %><br>
 <% end %>
+<%# raise 'err' %>
+<br>
+<%= link_to 'add service item / cost', new_invoice_path(:id => @invoice.id, :consultation_id => @invoice.consultation_id) %>

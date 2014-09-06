@@ -27,6 +27,7 @@ class PrescriptionsController < ApplicationController
 
   def show
     @prescription = Prescription.find params[:id]
+
     # @prescription_supplement = PrescriptionSupplement.find params[:id]
 
   end
@@ -50,24 +51,26 @@ class PrescriptionsController < ApplicationController
     redirect_to prescription_path
   end
 
-  def choose
-    @supplements = Supplement.all
-  end
+#   def choose
+#   raise 'errrrrr'
+#     @supplements = Supplement.all
+#   end
 
-  def add_supplements
-    prescription = Prescription.find params[:id]
-    prescription.save
+#   def add_supplements
+# raise 'err'
+#     prescription = Prescription.find params[:id]
+#     prescription.save
 
-    params[:supplement].each do |supplement_id, quantity|
-      supplement = Supplement.find supplement_id
-      if quantity.present?
-        # dosage = Dosage.create(:quantity => quantity, :supplement_id => supplement_id)
-        # prescription.dosage << dosage
-      end
-    end
+#     params[:supplement].each do |supplement_id, quantity|
+#       supplement = Supplement.find supplement_id
+#       if quantity.present?
+#         # dosage = Dosage.create(:quantity => quantity, :supplement_id => supplement_id)
+#         # prescription.dosage << dosage
+#       end
+#     end
 
-      redirect_to prescription_path
-  end
+#       redirect_to prescription_path
+#   end
 
   private
     def prescription_params
