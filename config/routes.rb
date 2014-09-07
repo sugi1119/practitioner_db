@@ -14,6 +14,11 @@ Rails.application.routes.draw do
 
   get '/invoices/:consultation_id/new' => 'invoices#new', :as => 'new_invoice'
 
+  get '/invoices/:id/choose' => 'invoices#choose', :as => 'choose'
+
+  post '/invoices/:id/add_menus' => 'invoices#add_menus'
+
+
   get '/prescriptions/:consultation_id/new' => 'prescriptions#new', :as => 'new_prescription'
 
   get '/prescriptions/:prescription_id/choose' => 'prescriptions#choose', :as => 'choose_supplements'

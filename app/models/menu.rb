@@ -10,7 +10,7 @@
 #
 
 class Menu < ActiveRecord::Base
-  has_and_belongs_to_many  :invoices
+  # has_and_belongs_to_many  :invoices
 
   def menu_package
     "#{self.try(:menu_item)} - AUD: #{self.try(:menu_cost)}"

@@ -1,0 +1,9 @@
+<%= form_tag "/prescriptions/#{params[:prescription_id]}/add_supplements" do  %>
+  <% @supplements.each do |supplement| %>
+    <label>
+      <%= number_field_tag "supplement[#{supplement.id}]", nil, :placeholder => 'Quantity' %>
+      <%= supplement.item_name %>
+    </label><br>
+  <% end %>
+<%= submit_tag %>
+<% end %>

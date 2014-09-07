@@ -1,39 +1,20 @@
 <%= form_for @invoice do |f| %>
-  <p>Date:
-    <%= @consultation.appointment.appointment_date %>
+<p>
+<%#= f.date_field :appointment_date, :min => Date.today %>
+<%#= time_field_tag 'appointment_time' %>
   </p>
+  <p><%#= f.label :practioner_id %>
+<%#= f.select :practioner_id, Practioner.all.map{|practioner|[practioner.id.to_s + practioner.name, practioner.id]}, :include_blank => true %></p>
 
+<p><%#= f.label :patient_id %>
+<%#= f.select :patient_id, Patient.all.map{|patient|[patient.id.to_s + patient.f_name + patient.l_name, patient.id]}, :include_blank => true %></p>
 
+<p><%= @consultaion.appointment.practioner.name %></p>
+<p><%= @consultation.appointment.patient.name %></p>
 
-  <div>Practitioner ID# <%= @consultation.appointment.practitioner_id %> / <%= @consultation.appointment.practitioner.name %></div>
-  <div></div>
-  <div>Patient Name: <%= @consultation.appointment.patient.name %></div>
-  <div>Consultation ID# <%= @consultation.id %></div>
+<p><%=f.label :item, "Service item" %>
+<%= f.text_field :item %> </p>
+<p>AUD: <%f.label :cost, "Consultation / service fee" %></p>
 
-
-  <div>
-  <%#raise 'err' %>
-    <%#= f.collection_select :charge_item,   @menus, :id, :menu_package, :class => "form-control input-lg" %>
-      <%= select_tag(:menu_id, options_from_collection_for_select(@menus, :id, :menu_package)) %>
-
-  </div>
-
-
-
-
-  <p><%#=f.label :charge_item, "Service" %>
-  <%#= f.text_field :charge_item %> </p>
-  <p>AUD: <%#f.label :charge_cost, "Consultation / service fee" %></p>
-
-  <!-- <div class="">
-      <label for="presecription">Prescription required</label>
-      <select name="prescription" id="prescription" class="form-control" placeholder="Please chose">
-        <option>Please chose</option>
-        <option>The first session </option>
-        <option>From the second session</option>
-      </select>
-    </div> -->
-  <%# raise 'err' %>
-  <%#= hidden_field_tag 'invoice[consultation_id]', @consultation.id %>
-  <%= f.submit %>
+<%= f.submit %>
 <% end %>

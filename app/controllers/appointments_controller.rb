@@ -1,10 +1,7 @@
 class AppointmentsController < ApplicationController
 
   def index
-       # raise'err'
     @appointments = Appointment.order('appointment_date ASC').all
-
-    # raise
   end
 
   def new
@@ -33,6 +30,7 @@ class AppointmentsController < ApplicationController
         render :new
       end
 
+    redirect_to @appointment
   end
 
 
@@ -42,7 +40,7 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find params[:id]
-    # @appointments = Appointment.all
+
   end
 
   def update

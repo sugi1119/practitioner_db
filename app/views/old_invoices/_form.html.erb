@@ -1,0 +1,32 @@
+<%# raise 'form mae' %>
+<%= form_for @invoice do |f| %>
+<%# raise 'form er' %>
+  <p>Date:
+    <%= @consultation.appointment.appointment_date %>
+  </p>
+
+  <div>Practitioner ID# <%= @consultation.appointment.practitioner_id %> / <%= @consultation.appointment.practitioner.name %></div>
+  <div>Patient Name: <%= @consultation.appointment.patient.name %></div>
+  <div>Consultation ID# <%= @consultation.id %></div>
+
+  <div>
+    <% if @invoice.charged_line != [] %>
+      <% @invoice.charged_line.each do |i| %>
+        <% m = Menu.find i %>
+        <%= m.menu_item %>, $ <%= m.menu_cost %>
+      <% end %>
+    <% end %>
+
+  </div>
+  <div>
+  <%#raise 'err' %>
+      <%= select_tag(:menu_id, options_from_collection_for_select(@menus, :id, :menu_package)) %>
+
+  </div>
+
+  <%# raise 'err1' %>
+  <%= hidden_field_tag 'invoice[consultation_id]', @consultation.id %>
+
+<% #raise 'er' %>
+  <%= f.submit %>
+<% end %>

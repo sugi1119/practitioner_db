@@ -18,10 +18,7 @@
     <%= f.label :dosage, "Dosage: "%>
       <%= f.text_area :dosage, :include_blank => true, :class => "form-control", :rows => "3" %>
   </div>
-  <div>
-    <%#= f.label @supplement.id %>
-      <%#= f.select @supplement.id, Supplement.all.map{|supplement|[supplement.id.to_s + supplement.item_name, supplement.amount, supplement.item_cost]}, :include_blank => true %>
-  </div>
+
   <%= hidden_field_tag :consultation_id, @consultation.id %>
   <%= f.submit :type => "submit", :class => "btn btn-default" %>
 <% end %>

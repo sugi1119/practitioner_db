@@ -1,28 +1,18 @@
-<h2>TAX INVOICE</h2>
-<div>ABN: <%= @consultation.appointment.practitioner.abn_number %> </div>
+<h2>Invoice</h2>
 
-Invoice ID: <%= @invoice.id%> <br>
-Consultation ID: <%= @invoice.consultation_id %><br>
+<p>Invoice ID: <%= @invoice.id %><br>
+Practioner ID: <%= @invoice.consultation.appointment.practioner_id %>
+Practioner Name: <%= @invoice.consultation.appointment.practioner.name %><br>
+Patient ID: <%= @invoice.consultaion.appointment.patient_id%>
+Patient Name: <%= @invoice.consultation.appointment.patient.name %><br>
+Appointment date & time: <%= @invoice.consultation.appointment.appointment_date %></p>
+<p>Service item:  <br><%= @invoice.item %></p>
+<p>Consultation/service fee: AUD: <%= @inovice.cost %></p>
 
-<div>Practitioner ID# <%= @consultation.appointment.practitioner_id %> / <%= @consultation.appointment.practitioner.name %></div>
-  <div></div>
-  <div>Patient Name: <%= @consultation.appointment.patient.name %></div>
-  <div>Consultation ID# <%= @consultation.id %></div>
+<p>Supplement:
+  <% @invoice.prescriptions.prescription_supplements.each do |ps| %> <br>
+  Item name: <%= @invoice.prescriptions.prescriptionsupplement.supplement.item_name %>
 
+  <br>Sub total cost of supplement: <%= (@invoice.prescription.prescriptionsupplement.supplement.amount).to_i * (@invoice.prescriptionsupplement.qty)%></p>
 
- <%# @invoice.each do |line|  %>
-<div>
-  <%#= @invoice.menus.menu_item %> <%#= @invoice.menus.menu_cost %>
-</div>
-<%# end %>
-
-<!-- Charge_item: <%#= @invoice.menus.pluck(:menu_item) %> -->
-
-
-<% @invoice.menus.each do |menu| %>
- charge item: <%= menu.menu_item %>
-  Charge cost: <%= menu.menu_cost %><br>
-<% end %>
-<%# raise 'err' %>
-<br>
-<%= link_to 'add service item / cost', new_invoice_path(:id => @invoice.id, :consultation_id => @invoice.consultation_id) %>
+  <p>Total cost: <%= (@inovice.cost) %></p>

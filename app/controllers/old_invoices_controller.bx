@@ -1,0 +1,124 @@
+class InvoicesController < ApplicationController
+
+  def index
+    @invoices = Invoice.all
+  end
+
+  def create
+    @invoice = Invoice.new invoice_params
+    @invoice[:status] = false
+
+    @check_status = Invoice.where(status: true)
+
+     if @check_status
+        @consultation = Consultation.find params[:consultation_id]
+        @menus = Menu.all
+        @invoice = Invoice.find params[:id]
+        @invoice.charged_line << Menu.find(params[:menu_id])
+      else
+        @consultation = Consultation.find params[:consultation_id]
+        @menus = Menu.all
+        @invoice.charged_line = []
+        @invoice.charged_line << Menu.find(params[:menu_id])
+        @invoice[:status] = true
+      end
+
+      if invoice.save
+        redirect_to invoice_path(invoice)
+      else
+        render :new
+      end
+  end
+
+  def new
+    @invoice = Invoice.new
+  end
+
+  def edit
+    @invoice = Invoice.find params[:id]
+  end
+
+  def show
+    @invoice = Invoice.find params[:id]
+    consultation_id = @invoice.consultation_id
+    @consultation = Consultation.find consultation_id
+  end
+
+  def update
+    invoice = Invoice.find params[:id]
+    consultation_id = invoice.consultation_id
+    consultation = Consultation.find consultation_id
+    m = Menu.find(params[:menu_id])
+    invoice.charged_line << m.id
+
+    if invoice.save
+      redirect_to invoice
+     else
+      render :edit
+    end
+
+
+
+     # invoice.charged_line.each do |line_menu|
+        # if invoice.charge_item || invoice.charge_cost
+          # invoice.charged_line << line_menu
+
+          # invoice.charge_cost << menu.menu_cost
+
+        # else
+        #   invoice.charge_item << menu.menu_item
+        #   invoice.charge_cost << menu.menu_cost
+        # end
+      # end
+
+
+  end
+
+  def destroy
+    invoice = Invoice.find params[:id]
+    invoice.destroy
+
+    redirect_to invoice_index
+  end
+
+  def choose
+   # raise 'ee at choose_menu'
+    @invoice = Invoice.find params[:id]
+    consultation_id = @invoice.consultation_id
+    @consultation = Consultation.find consultation_id
+
+     @menus = Menu.all
+
+      # redirect_to invoice_path
+  end
+
+  def add_menu
+   raise 'add'
+     @invoice = Invoice.find params[:id]
+ raise 'komata'
+      @menus = Menu.all
+      additional_menu = Menu.find(params[:menu_id])
+      @invoice.charged_line << additional_menu
+
+      @consultation = Consultation.find params[:consultation_id]
+      @menus = Menu.all
+      @invoice = Invoice.find params[:id]
+
+    redirect_to invoice_path
+    end
+
+  private
+    def invoice_params
+      params.require(:invoice).permit(:consultation_id, :item, :cost, :status, :charged_line )
+    end
+
+end
+
+# invoice_index GET    /invoice(.:format)                               invoice#index
+#                  POST   /invoice(.:format)                               invoice#create
+#      new_invoice GET    /invoice/new(.:format)                           invoice#new
+#     edit_invoice GET    /invoice/:id/edit(.:format)                      invoice#edit
+#          invoice GET    /invoice/:id(.:format)                           invoice#show
+#                  PATCH  /invoice/:id(.:format)                           invoice#update
+#                  PUT    /invoice/:id(.:format)                           invoice#update
+#                  DELETE /invoice/:id(.:format)                           invoice#destroy
