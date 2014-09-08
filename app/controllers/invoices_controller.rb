@@ -5,7 +5,7 @@ class InvoicesController < ApplicationController
   end
 
   def create
-     # raise 'err create'
+    raise 'err create'
     invoice = Invoice.create invoice_params
     invoice.consultation_id = params[:consultation_id]
     invoice.status = false
@@ -26,22 +26,31 @@ class InvoicesController < ApplicationController
 
   def edit
     @invoice = Invoice.find params[:id]
+    @consultation = Consultation.find @invoice.consultation_id
   end
 
   def show
-    # raise 'err'
+
     @invoice = Invoice.find params[:id]
     @consultation = @invoice.consultation_id
 
-    supplement_pick
+    prescription = Prescription.all.find{|ps| ps.consultation_id == @consultation }
 
+    if prescription == nil
+      @pre_supplement = []
+      @sub_total = nil
+    else
+      @pre_supplement = PrescriptionSupplement.all.select{|s| s.prescription_id == prescription.id }
+    end
+
+    # raise 'err'
     @sub_total = []
     @total_cost = 0
   end
 
   def update
     invoice = Invoice.find params[:id]
-    invoice.upate invoice_params
+    invoice.update invoice_params
 
     redirect_to invoice
   end
@@ -59,7 +68,7 @@ class InvoicesController < ApplicationController
     end
 
     def supplement_pick
-      prescription = Prescription.all.select{|ps| ps.consultation_id = @consultation}
+      prescription = Prescription.all.select{|ps| ps.consultation_id == @consultation }
 
       @pre_supplement = PrescriptionSupplement.all.select{|s| s.prescription_id}
 

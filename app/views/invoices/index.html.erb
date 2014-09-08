@@ -1,1 +1,16 @@
 <h2>All Invoces list</h2>
+ <div class="col-md-7 col-md-offset-2">
+  <% @invoices.each do |invoice| %>
+    <ul class="p_list">
+     <blockquote>
+      <li><strong>Invoice ID: #<%= invoice.id %></li>
+      <li>Date: <%= invoice.consultation.appointment.appointment_date %></strong></li>
+      <li>Patient ID/Name: <%= invoice.consultation.appointment.patient.id %> / <%= invoice.consultation.appointment.patient.name %></li>
+      <li>Practitioner ID/Name: <%= invoice.consultation.appointment.practitioner.id %> / <%= invoice.consultation.appointment.practitioner.name %></li>
+      <li><%= link_to('Edit', edit_invoice_path(invoice))%></li>
+      <li><%= link_to('Delete', invoice, :data => {:confirm => 'Please confirm to delete the invoice from the list', :method => :delete })%></li>
+      </blockquote>
+    </ul>
+    <hr>
+  <% end %>
+</div>

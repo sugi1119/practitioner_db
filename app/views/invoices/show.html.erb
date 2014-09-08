@@ -47,7 +47,7 @@
             <% end %>
       <tfoot>
         <tr>
-            <td colspan="4" align="right">Total : AUD<%= @total_cost = @sub_total.reduce(:+) + @invoice.cost %></td>
+            <td colspan="4" align="right">Total : AUD<%= @total_cost = (@sub_total.inject 0, :+) + @invoice.cost %></td>
         </tr>
       </tfoot>
       </tbody>
