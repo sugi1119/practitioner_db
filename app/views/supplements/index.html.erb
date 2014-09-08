@@ -1,13 +1,20 @@
 <h2>Registered Supplement list</h2>
+<div class="col-md-5 col-md-offset-3">
+<p>Alphabetical order</p>
 <div class="info">
   <% @supplements.each do |supplement| %>
-    <p> Supplement ID: <%= supplement.id %><br>
+  <blockquote>
+    <h4> Supplement ID: <%= supplement.id %><br>
         Item name: <%= supplement.item_name %><br>
+    </h4>
         Amount per bag: <%= supplement.package_amount %><br>
         Item cost: $ <%= supplement.item_cost %></p>
     <li><%= link_to('Edit', edit_supplement_path(supplement))%></li>
     <li><%= link_to('Delete', supplement, :data => {:confirm => 'Are you sure?', :method => :delete })%></li>
+  </blockquote>
+    <hr>
 <% end %>
+</div>
 </div>
 
 <%#= form_for @supplements do |f| %>

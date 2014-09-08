@@ -30,7 +30,6 @@ class AppointmentsController < ApplicationController
         render :new
       end
 
-    redirect_to @appointment
   end
 
 
@@ -94,7 +93,7 @@ class AppointmentsController < ApplicationController
               return false
             elsif Date.parse(c.appointment_date.to_s) == Date.parse(@check.to_s)
               if (@check.to_i - c.appointment_date.to_i).abs < 3600
-                flash[:notice] = "Each consultation needs 1 hour. Please chose other day/time.#{@check.hour - c.appointment_date.hour}"
+                flash[:notice] = "Each consultation needs 1 hour. Please chose other day/time."
 
                 return false
               end

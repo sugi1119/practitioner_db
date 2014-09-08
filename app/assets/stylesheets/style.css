@@ -1,0 +1,90 @@
+
+
+.navbar-brand{
+  /*border: 5px solid #FFFFFF;*/
+  /*background-color: #CF88B6;*/
+  /*color: #FDFFFD;*/
+}
+
+.sign_login{
+  /*border: 1px solid red;*/
+  width: 30%;
+  text-align: center;
+  margin-top: 1%;
+}
+
+#password{
+  width: 100%;
+  height: 34px;
+}
+
+h2, h3, h4{
+  text-align: center;
+}
+
+#appointment_appointment_date{
+  text-align: center;
+}
+
+#appointment_appointment_time{
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  border-radius: 4px;
+}
+
+#appointment_practitioner_id{
+  width:100%;
+  height: 20%;
+  font-size: 2em;
+}
+
+#appointment_patient_id{
+  width:100%;
+  height: 20%;
+  font-size: 2em;
+}
+
+.btn{
+  margin-left:30%;
+  margin-top: 5%;
+}
+
+.p_list{
+  font-size: 1.5em;
+  list-style: none;
+
+}
+
+#patient_dob{
+  text-align: center;
+}
+
+#sup_label{
+  border: 1px dashed #656B60;
+  padding:0.5em;
+}
+
+#prescription_supplement_supplement_id{
+  width: 100%;
+  font-size: 1.5em;
+}
+
+#prescription_supplement_qty{
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 80%;
+}
+
+.pres_sup_button{
+  margin-left: -30%;
+}
+
+.double{
+  border-spacing: 1px;
+  border-bottom: 1px dashed #656B60;
+}
+
+.need_space{
+  margin-bottom: 1em;
+}

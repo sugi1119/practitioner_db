@@ -1,4 +1,4 @@
-==Practitioner management database
+== Practitioner management database
 
 This is a small application for a practitioner.
 

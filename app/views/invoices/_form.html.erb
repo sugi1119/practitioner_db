@@ -1,20 +1,30 @@
-<%= form_for @invoice do |f| %>
-<p>
-<%#= f.date_field :appointment_date, :min => Date.today %>
-<%#= time_field_tag 'appointment_time' %>
-  </p>
-  <p><%#= f.label :practioner_id %>
-<%#= f.select :practioner_id, Practioner.all.map{|practioner|[practioner.id.to_s + practioner.name, practioner.id]}, :include_blank => true %></p>
+<div class="col-md-6 col-md-offset-3">
+  <%= form_for @invoice, :class => "form-group" do |f| %>
+    <div>
+      <strong>
+      Date: <%= @consultation.appointment.appointment_date %>
+    </strong>
+    </div>
+    <div>
+      <strong>
+      Practitioner name:<%= @consultation.appointment.practitioner.name %>
+      </strong>
+    </div>
+    <div class="need_space">
+      <strong>
+      Patient name: <%= @consultation.appointment.patient.name%>
+    </strong>
+    </div>
 
-<p><%#= f.label :patient_id %>
-<%#= f.select :patient_id, Patient.all.map{|patient|[patient.id.to_s + patient.f_name + patient.l_name, patient.id]}, :include_blank => true %></p>
-
-<p><%= @consultaion.appointment.practioner.name %></p>
-<p><%= @consultation.appointment.patient.name %></p>
-
-<p><%=f.label :item, "Service item" %>
-<%= f.text_field :item %> </p>
-<p>AUD: <%f.label :cost, "Consultation / service fee" %></p>
-
-<%= f.submit %>
-<% end %>
+    <div><%=f.label :item, "Service item" %>
+        <%= f.text_field :item, :class => "form-control" %>
+    </div>
+    <div><%=f.label :cost, "Consultation / service fee" %>
+        <%= f.text_field :cost, :class => "form-control" %>
+    </div>
+  <%# raise 'mou' %>
+    <%= hidden_field_tag :consultation_id, @consultation.id %>
+    <%# raise 'err' %>
+    <%= f.submit :type=>"submit", :class=>"btn btn-default" %>
+  <% end %>
+</end>

@@ -1,18 +1,61 @@
-<h2>Invoice</h2>
+<div class="col-md-6 col-md-offset-3">
+<h2>TAX Invoice</h2>
+<h4>ABN# <%= @invoice.consultation.appointment.practitioner.abn_number %></h4>
+  <div>
+    <strong>Date:</strong><%= @invoice.consultation.appointment.appointment_date %>
+  </div>
 
-<p>Invoice ID: <%= @invoice.id %><br>
-Practioner ID: <%= @invoice.consultation.appointment.practioner_id %>
-Practioner Name: <%= @invoice.consultation.appointment.practioner.name %><br>
-Patient ID: <%= @invoice.consultaion.appointment.patient_id%>
-Patient Name: <%= @invoice.consultation.appointment.patient.name %><br>
-Appointment date & time: <%= @invoice.consultation.appointment.appointment_date %></p>
-<p>Service item:  <br><%= @invoice.item %></p>
-<p>Consultation/service fee: AUD: <%= @inovice.cost %></p>
+  <div>
+    <strong>Invoice ID:</strong> <%= @invoice.id %><br>
+    <strong>Practitioner ID/Name:</strong> <%= @invoice.consultation.appointment.practitioner_id %>/<%= @invoice.consultation.appointment.practitioner.name %><br>
+    <strong>Address:</strong> <%= @invoice.consultation.appointment.practitioner.address %> <%= @invoice.consultation.appointment.practitioner.postcode %><br>
+    <strong>Contact:</strong> <%= @invoice.consultation.appointment.practitioner.phone %>
+  </div>
+  <div>
+    <strong>Patient ID/Name:</strong> <%= @invoice.consultation.appointment.patient_id%>/ <%= @invoice.consultation.appointment.patient.name %><br>
+    <strong>Address:</strong> <%= @invoice.consultation.appointment.patient.address %> <%=@invoice.consultation.appointment.patient.postcode %>
+  </div>
+<div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Item</th>
+          <th>Qty.</th>
+          <th>Cost: AUD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td><%= @invoice.item %></td>
+          <td>1</td>
+          <td><%= @invoice.cost %></td>
+        </tr>
+            <% i = 1 %>
+            <% @pre_supplement.each do |ps| %>
+            <% supplement = Supplement.find ps.supplement_id %>
+        <tr>
+            <td><%= i = i + 1 %></td>
+            <td><%= supplement.item_name %></td>
+            <td><%= ps.qty %> </td>
+            <td><%= supplement.item_cost %></td>
+        </tr>
 
-<p>Supplement:
-  <% @invoice.prescriptions.prescription_supplements.each do |ps| %> <br>
-  Item name: <%= @invoice.prescriptions.prescriptionsupplement.supplement.item_name %>
+            <% @sub_total << ps.qty * supplement.item_cost %>
+            <% end %>
+      <tfoot>
+        <tr>
+            <td colspan="4" align="right">Total : AUD<%= @total_cost = @sub_total.reduce(:+) + @invoice.cost %></td>
+        </tr>
+      </tfoot>
+      </tbody>
+    </table>
+</div>
+<div class="double">
+  Practitioner Sign:
+</div>
+</div>
+</div>
 
-  <br>Sub total cost of supplement: <%= (@invoice.prescription.prescriptionsupplement.supplement.amount).to_i * (@invoice.prescriptionsupplement.qty)%></p>
-
-  <p>Total cost: <%= (@inovice.cost) %></p>

@@ -1,45 +1,47 @@
-<%= form_for @patient do |f| %>
+<div class="col-md-6 col-md-offset-3">
+<%= form_for @patient, :class => "form-group" do |f| %>
 
   <div>
     <%= f.label :title, "Title: " %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title , :class => "form-control" %>
   </div>
   <div>
     <%= f.label :f_name, "First Name: " %>
-    <%= f.text_field :f_name, :autofocus => true %>
+    <%= f.text_field :f_name, :autofocus => true, :class => "form-control" %>
   </div>
   <div>
     <%= f.label :m_name, "Middle Name: " %>
-    <%= f.text_field :m_name %>
+    <%= f.text_field :m_name, :class => "form-control" %>
   </div>
-  <div>
+  <div >
     <%= f.label :l_name, "Last Name: " %>
-    <%= f.text_field :l_name, :autofocus => true %>
+    <%= f.text_field :l_name, :autofocus => true, :class => "form-control" %>
   </div>
-  <div>
+  <div >
     <%= f.label :address, "Address (street, city, state):"%>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, :class => "form-control" %>
   </div>
   <div>
     <%= f.label :postcode, "Postcode: "%>
-    <%= f.text_field :postcode %>
+    <%= f.text_field :postcode, :class => "form-control" %>
   </div>
-  <div>
+  <div >
     <%= f.label :phone, "Phone number: " %>
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, :class => "form-control" %>
   </div>
   <div>
     <%= f.label :mobile, "Mobile number: " %>
-    <%= f.text_field :mobile %>
+    <%= f.text_field :mobile, :class => "form-control" %>
   </div>
   <div>
     <%= f.label :dob, "Date of Birth: "%>
-    <%= f.text_field :dob, :placeholder => 'YYYY-MM-DD' %>
+    <%= f.text_field :dob, :placeholder => 'YYYY-MM-DD', :class => "form-control" %>
   </div>
   <div>
     <%= f.label :occupation, "Occupation: " %>
-    <%= f.text_field :occupation %>
+    <%= f.text_field :occupation, :class => "form-control" %>
   </div>
 
-    <%= f.submit :type => "submit" %>
+    <%= f.submit :type => "submit", :class=>"btn btn-default"%>
 <% end %>
+</div>

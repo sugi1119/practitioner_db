@@ -1,7 +1,8 @@
 <h2>Welcome to Practitioner Database</h2>
-<div class="info">
-<h2>Today's appointments for <%= @current_user.name %></h2>
-<div class="app">
+<!-- <div class="col-md-8 col-md-offset-2"> -->
+<h3>Today's appointments for <%= @current_user.name %></h3>
+<!-- </div> -->
+<div class="col-md-6 col-md-offset-3">
   <% @appointments.each do |appointment| %>
     <% if @current_user.id == appointment.practitioner_id %>
       <!-- <p>There is no appointment made for today.</p> -->
@@ -19,9 +20,11 @@
     <% end%>
   <% end %>
 </div>
-<hr>
-<h2>List of all appointments for all registered practitioners</h2>
-<div class="app">
+<div class="col-md-8 col-md-offset-2">
+  <hr>
+<h3>List of all appointments for all registered practitioners</h3>
+</div>
+<div class="col-md-6 col-md-offset-3">
 <% @appointments.each do |appointment|%>
   <%if appointment.appointment_date.strftime('%Y-%m-%d') >= Date.today.to_s %>
     <blockquote>

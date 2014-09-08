@@ -1,37 +1,41 @@
-<div class="supple_info">
-<h2>Prescription</h2>
-<h4>Patient ID# / Name: #<%= @prescription.consultation.patient.id%> / <%= @prescription.consultation.patient.name %></h4>
-<div class="supple_info2">
-  <strong>Recommendation: </strong><br>
-  <%= @prescription.recommendation %>
-</p>
+<div class="col-md-7 col-md-offset-3">
+  <h2>Prescription</h2>
+  <h4>Patient ID# / Name: #<%= @prescription.consultation.patient.id%> / <%= @prescription.consultation.patient.name %></h4>
+    <div>
+      <strong>Recommendation: </strong><br>
+      <%= @prescription.recommendation %>
+    </div>
 
-<p>
-  <strong>Dosage : </strong><br>
-   <%= @prescription.dosage %>
-</p>
+    <div>
+      <strong>Dosage : </strong><br>
+       <%= @prescription.dosage %>
+    </div>
 
-<p>
-  <strong>Supplement list:</strong> <br>
-  <% @prescription.prescription_supplements.each do |ps| %>
-   Item name: <%= ps.supplement.item_name %><br>
-  Amount of per bag:<%= ps.supplement.package_amount %> <br>
-  Qty: <%= ps.qty %><br>
+  <div id="sup_label">
+    <strong>Supplement for:<br>
+       Patient ID# / Name: #<%= @prescription.consultation.patient.id%> / <%= @prescription.consultation.patient.name %></strong><br>
+    <strong>Supplement list:</strong> <br>
+      <% @prescription.prescription_supplements.each do |ps| %>
+        Item name: <%= ps.supplement.item_name %><br>
+        Amount of per bag:<%= ps.supplement.package_amount %> <br>
+        Qty: <%= ps.qty %><br>
+
+
 <%# raise 'err' %>
-  <li><%= link_to 'edit supplement', edit_prescription_supplement_path(ps.id) %></li>
-  <td><%= link_to "Delete", prescription_supplement_path(ps.id), method: :delete, data: { confirm: "Are you sure?" } %>
-  <hr>
-  <% end %>
-</p>
+      <li><%= link_to 'edit supplement', edit_prescription_supplement_path(ps.id) %></li>
+      <li><%= link_to "Delete", prescription_supplement_path(ps.id), method: :delete, data: { confirm: "Are you sure?" } %></li>
+      <hr>
+    <% end %>
 
-<%= link_to 'add supplement', new_prescription_supplement_path(:prescription_id => @prescription.id) %>
-</div>
-<p class="practitioner">
-  <strong>Practitioner name: <%= @prescription.consultation.appointment.practitioner.name %> </strong><br>
-  <strong>Sign: </strong><br>
-  <strong>Date: </strong><%= @prescription.consultation.appointment.appointment_date.strftime("%Y-%m-%d") %>
-</p>
-<%= link_to 'Invoice', new_invoice_path(:consultation_id => @prescription.consultation.id)%>
+
+
+
+    <strong>Practitioner name: <%= @prescription.consultation.appointment.practitioner.name %> </strong><br>
+    <strong>Sign: </strong><br>
+    <strong>Date: </strong><%= @prescription.consultation.appointment.appointment_date.strftime("%Y-%m-%d") %>
+  </div>
+      <%= link_to 'add supplement', new_prescription_supplement_path(:prescription_id => @prescription.id) %><br>
+      <%= link_to 'Invoice', new_invoice_path(:consultation_id => @prescription.consultation.id)%>
 </div>
 
 

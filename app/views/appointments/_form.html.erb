@@ -1,21 +1,27 @@
-<%= form_for @appointment do |f| %>
+<%= form_for @appointment do |f|%>
   <%= flash[:notice] %>
+
   <div class="form-group">
-    <%= f.date_field :appointment_date, :min => Date.today %>
+    <%= f.label :appointment_date, "Date:" %>
+    <%= f.date_field :appointment_date, :min => Date.today, :class => "form-control"  %>
+  </div>
+
+  <div class="form-group", id="time_size">
+    <%= f.label "Time" %>
     <%= time_field_tag 'appointment[appointment_time]' %>
   </div>
 
-  <div class="form-group">
+  <div class='form-group'>
     <%= f.label :practitioner_id %>
-    <%= f.select :practitioner_id, Practitioner.all.map{|practitioner|[practitioner.id.to_s + practitioner.name, practitioner.id]}, :include_blank => true, :class =>'form-control input-lg' %>
+    <%= f.select :practitioner_id, Practitioner.all.map{|practitioner|[practitioner.id.to_s + practitioner.name, practitioner.id]}, :include_blank => true, :class=>"form-control"%>
   </div>
 
   <div class="form-group">
     <%= f.label :patient_id %>
-    <%= f.select :patient_id, Patient.all.map{|patient|[patient.id.to_s + patient.f_name + patient.l_name, patient.id]}, :include_blank => true, :class =>'form-control input-lg' %>
+    <%= f.select :patient_id, Patient.all.map{|patient|[patient.id.to_s + patient.f_name + patient.l_name, patient.id]}, :include_blank => true, :class=>"form-control" %>
   </div>
-  <div class="form-group">
-    <%#== check %>
-    <%= f.submit "Update Appointment"%>
+
+  <div class-"form-group">
+    <%= f.submit :type =>"submit", :class => "btn btn-default"%>
   </div>
 <% end %>

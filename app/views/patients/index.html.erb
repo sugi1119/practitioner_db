@@ -1,9 +1,10 @@
 <h2>Patient lists</h2>
-
+ <div class="col-md-7 col-md-offset-2">
   <% @patients.each do |patient| %>
-    <ul>
-      <li>Patient ID: #<%= patient.id %></li>
-      <li>Name: <%= patient.title %>. <%= patient.name %></li>
+    <ul class="p_list">
+     <blockquote>
+      <li><strong>Patient ID: #<%= patient.id %></li>
+      <li>Name: <%= patient.name %></strong></li>
       <li>Address: <%= patient.address %> <%= patient.postcode %></li>
       <li>Phone number: <%= patient.phone %></li>
       <li>Mobile number: <%= patient.mobile %></li>
@@ -12,5 +13,8 @@
 
       <li><%= link_to('Edit', edit_patient_path(patient))%></li>
       <li><%= link_to('Delete', patient, :data => {:confirm => 'Please confirm to delete the patient from the list', :method => :delete })%></li>
+      </blockquote>
     </ul>
+    <hr>
   <% end %>
+</div>

@@ -8,16 +8,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
-  <div class="container">
-    <nav>
-      <ul>
-        <%= @current_user.try(:email) %>
-          <%== smartnav %>
+  <nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">Practitioner Database</a>
+    </div>
 
+    <% if @current_user.try(:is_admin) %>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/practitioners">Practitioner List</a></li>
       </ul>
+    <% end %>
 
-    </nav>
-<%= yield %>
+    <% if @current_user.present?%>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Appointments <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="divider"></li>
+                <li><a href="/appointments">Appointment List</a></li>
+                <li class="divider"></li>
+                <li><a href="/appointments/new">Register new appointment</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Patients <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="divider"></li>
+                <li><a href="/patients">Patient list</a></li>
+                <li class="divider"></li>
+                <li><a href="/patients/new">Register new patient</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Supplements <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="divider"></li>
+                <li><a href="/supplements">Supplement list</a></li>
+                <li class="divider"></li>
+                <li><a href="/supplements/new">Register new supplement</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Invoice <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="divider"></li>
+                <li><a href="/invoices">Invoice list</a></li>
+                <li class="divider"></li>
+                <li><a href="#"></a></li>
+              </ul>
+            </li>
+          </ul>
+          <p class="navbar-text pull-right">
+              Logged in as <strong><%= @current_user.email %></strong>.
+         |
+              <%= link_to "Logout", login_path, method: :delete, :class => 'navbar-link'  %>
+            <% else %>
+              <div class ="sign_login">
+                <%= link_to "Sign up", new_practitioner_path, :class => 'navbar-link'  %> |
+                <%= link_to "Login", login_path, :class => 'navbar-link'  %>
+              </div>
+            <% end %>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+  </nav>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2"><%= yield %></div>
+</div>
+
+
+
   </div>
 </body>
 </html>

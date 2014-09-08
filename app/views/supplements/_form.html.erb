@@ -1,19 +1,22 @@
+<div class="col-md-6 col-md-offset-3">
+  <p>Please enter the item name, bottle or package amount, and the cost per bottle or package. </p>
 <%= form_for @supplement, :class => "form-group" do |f| %>
- <div class="form-group">
-  <%= f.label :item_name, "Item:" %>
-  <%= f.text_field :item_name, :class => "form-control" %>
-</div>
+   <div>
+    <%= f.label :item_name, "Item:" %>
+    <%= f.text_field :item_name, :class => "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= f.label :pacakge_amount, "Amount per package or bottle:" %>
-  <%= f.text_field :package_amount, :class => "form-control" %>
-</div>
+  <div>
+    <%= f.label :pacakge_amount, "Amount per package or bottle:" %>
+    <%= f.text_field :package_amount, :class => "form-control" %>
+  </div>
 
-<div class="form-group">
-  <%= f.label :item_cost, "Cost: $" %>
-  <%= f.text_field :item_cost, :class => "form-control"%>
-</div>
+  <div>
+    <%= f.label :item_cost, "Cost: $" %>
+    <%= f.text_field :item_cost, :class => "form-control"%>
+  </div>
 
-<%= f.submit :type => "submit", :class => "btn btn-default"%>
+  <%= f.submit :type => "submit", :class => "btn btn-default"%>
 
 <% end %>
+</div>
