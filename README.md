@@ -5,6 +5,7 @@ This is a small application for a practitioner.
 ## Development phase:
 > Completed:
 >> 1. Create a simple data flow from from Appointment/ Consultation/Prescription/ Supplement/ Invoice.
+
 >In future:
 >>  2. Create data flow between Service menu and Invoice / also Prescription and Supplement with multiple data.
 >>  3. Create data flow between Consultation and Health History Questionaries.
